@@ -23,7 +23,7 @@ class LoginController extends CommonController
            if(strtoupper($input_data['code'])!=$_code){
                return back()->with('msg','验证码错误');
            }
-            $user_data=UserModel::first();
+            $user_data=UserModel::first();//获取数据库中的用户信息
             $user_pass_data=Crypt::decrypt($user_data['user_pass']);
             if(($input_data['user_name']!=$user_data['user_name'])||($input_data['user_pass']!=$user_pass_data))
             {
@@ -36,7 +36,6 @@ class LoginController extends CommonController
         }
        else {
           // dd(Crypt::decrypt($str));
-
             return view('admin.login');
        }
     }

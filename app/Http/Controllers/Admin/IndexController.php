@@ -27,8 +27,8 @@ class IndexController extends CommonController
         $user->user_name = "wangwu";
         $user->update();
         dd($user);*/
-
-        return view('admin.index');
+        //return view('admin.index');
+        return view('admin.homeindex');
     }
 
     public function quit ()

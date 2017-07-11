@@ -12,7 +12,6 @@ class LinksController extends CommonController
     //Get.admin/link.列出全部
     public function index ()
     {
-
        //$data = LinksModel::all();
         $data = LinksModel::orderBy('links_order','asc')->get();
        // $data = $this->orderBy('links_order','asc')->get()

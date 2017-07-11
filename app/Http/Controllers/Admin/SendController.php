@@ -17,7 +17,8 @@ class SendController extends CommonController
             $data=$this->query($this->ipaddr,$configs['device'],$configs['type'],$configs['devid']);
         }
         if($configs['cmdtype']=='control'){
-            $data=$this->control($this->ipaddr,$configs['device'],$configs['type'],$configs['devid']);
+            $data=$this->control($this->ipaddr,$configs['device'],$configs['type'],$configs['devid'],
+                $configs['cmder'],$configs['value']);
         }
 
         //$json = json_decode($data, true);
@@ -45,8 +46,7 @@ class SendController extends CommonController
         $ch = curl_init();
         $timeout=5;
         //$url="http://1498kn1392.imwork.net:27216/query.php?device=2&type=2&address=0";
-        $url=$ipaddr.'/control.php?device='.$device.'&type='.$type.'&address='.$devid.
-        '&cmd='.$cmder.'value='.$value;
+        $url=$ipaddr.'/control.php?device='.$device.'&type='.$type.'&address='.$devid. '&cmd='.$cmder.'&value='.$value;
         curl_setopt($ch, CURLOPT_URL,$url);
         curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
